@@ -1,0 +1,200 @@
+<title>دورية استراحة الشفاء</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lalezar&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap">
+<style>
+/* Layout: logo banner on top, one big countdown block, then a plain info list and a map button. Colors come from the logo: sand, teal, sun orange, gold, royal blue. */
+:root {
+  --bg: #fbebd3;
+  --surface: #fff6e8;
+  --fg: #0f2547;
+  --muted: #5a6478;
+  --accent: #0b4db0;
+  --sun: #f7931e;
+  --gold: #e8c21a;
+  --teal: #058a88;
+  --line: #e6cfa9;
+  --on-accent: #ffffff;
+  --font-display: "Lalezar", "Tajawal", "Segoe UI", sans-serif;
+  --font-body: "IBM Plex Sans Arabic", "Tajawal", "Segoe UI", Tahoma, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0c2b2d;
+    --surface: #123a3c;
+    --fg: #fbebd3;
+    --muted: #a9c0bb;
+    --accent: #f7a640;
+    --sun: #f7931e;
+    --gold: #f0cf3f;
+    --teal: #2bb5b0;
+    --line: #25595a;
+    --on-accent: #0c2b2d;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0c2b2d;
+  --surface: #123a3c;
+  --fg: #fbebd3;
+  --muted: #a9c0bb;
+  --accent: #f7a640;
+  --sun: #f7931e;
+  --gold: #f0cf3f;
+  --teal: #2bb5b0;
+  --line: #25595a;
+  --on-accent: #0c2b2d;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  padding-block: 20px 40px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 720px; margin-inline: auto; display: flex; flex-direction: column; gap: 28px; }
+
+.banner { display: block; width: 100%; height: auto; border-radius: 18px; }
+
+.hero { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.kicker { color: var(--teal); font-weight: 600; letter-spacing: 0.04em; font-size: 15px; margin: 0; }
+h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(40px, 11vw, 64px); line-height: 1.15; margin: 0; text-wrap: balance; }
+.status { margin: 0; color: var(--muted); font-size: 16px; min-height: 1.7em; }
+
+.clock { direction: rtl; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; width: 100%; margin-top: 6px; }
+.unit {
+  flex: 1 1 0;
+  min-width: 84px;
+  max-width: 180px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 14px 8px 10px;
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+}
+.unit[hidden] { display: none !important; }
+.num {
+  font-family: var(--font-display);
+  font-size: clamp(44px, 14vw, 76px);
+  line-height: 1.1;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  direction: ltr;
+}
+.lbl { font-size: 14px; color: var(--muted); font-weight: 500; }
+.unit.sec .num { color: var(--sun); }
+
+.info { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 6px 20px; margin: 0; }
+.row { display: flex; gap: 16px; justify-content: space-between; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.row:last-child { border-bottom: 0; }
+.row dt { color: var(--muted); font-size: 15px; margin: 0; flex: none; }
+.row dd { margin: 0; font-weight: 600; text-align: left; min-width: 0; }
+
+.place { display: flex; flex-direction: column; gap: 12px; }
+.btns { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn {
+  font: inherit; font-weight: 600; cursor: pointer; text-decoration: none;
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 48px; padding: 0 22px; border-radius: 12px; border: 2px solid var(--accent);
+}
+.btn.primary { background: var(--accent); color: var(--on-accent); flex: 1 1 220px; }
+.btn.ghost { background: transparent; color: var(--accent); flex: 0 1 auto; }
+.btn:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+.link { direction: ltr; text-align: left; font-size: 13px; color: var(--muted); overflow-wrap: anywhere; margin: 0; user-select: all; }
+
+.foot { text-align: center; color: var(--muted); font-size: 15px; margin: 0; }
+.foot strong { color: var(--fg); font-family: var(--font-display); font-weight: 400; font-size: 20px; }
+</style>
+
+<main class="wrap">
+  <img class="banner" src="logo.jpg" alt="شعار استراحة الشفاء" width="2000" height="667">
+
+  <section class="hero" aria-live="polite">
+    <p class="kicker">الليلة بعد صلاة العشاء</p>
+    <h1>دورية الشفاء</h1>
+    <p class="status" id="status">باقي على الدورية</p>
+    <div class="clock" role="timer" aria-label="الوقت المتبقي على الدورية">
+      <div class="unit" id="u-d" hidden><span class="num" id="d">0</span><span class="lbl">يوم</span></div>
+      <div class="unit"><span class="num" id="h">00</span><span class="lbl">ساعة</span></div>
+      <div class="unit"><span class="num" id="m">00</span><span class="lbl">دقيقة</span></div>
+      <div class="unit sec"><span class="num" id="s">00</span><span class="lbl">ثانية</span></div>
+    </div>
+  </section>
+
+  <dl class="info">
+    <div class="row"><dt>اليوم</dt><dd>الاثنين، ٢٦ أكتوبر ٢٠٢٦</dd></div>
+    <div class="row"><dt>الوقت</dt><dd>بعد صلاة العشاء</dd></div>
+    <div class="row"><dt>المكان</dt><dd>استراحة الشفاء</dd></div>
+  </dl>
+
+  <section class="place">
+    <div class="btns">
+      <a class="btn primary" id="map" href="https://maps.app.goo.gl/Bg9kHTYm1gHt243a9?g_st=ic" target="_blank" rel="noopener">افتح الموقع في الخرائط</a>
+      <button class="btn ghost" id="copy" type="button">نسخ الرابط</button>
+    </div>
+    <p class="link" id="url">https://maps.app.goo.gl/Bg9kHTYm1gHt243a9?g_st=ic</p>
+  </section>
+
+  <p class="foot"><strong>حيّاكم الله</strong><br>لا أحد يتأخر</p>
+</main>
+
+<script>
+// Countdown target: Monday 26 Oct 2026, 7:30 PM Riyadh time (after Isha). Change this line to move the time.
+var TARGET = new Date('2026-10-26T19:30:00+03:00').getTime();
+
+var el = {
+  d: document.getElementById('d'), h: document.getElementById('h'),
+  m: document.getElementById('m'), s: document.getElementById('s'),
+  ud: document.getElementById('u-d'), st: document.getElementById('status')
+};
+function pad(n) { return n < 10 ? '0' + n : String(n); }
+
+function tick() {
+  var diff = Math.max(0, TARGET - Date.now());
+  var total = Math.floor(diff / 1000);
+  var days = Math.floor(total / 86400);
+  var hrs = Math.floor((total % 86400) / 3600);
+  var min = Math.floor((total % 3600) / 60);
+  var sec = total % 60;
+  el.ud.hidden = days === 0;
+  el.d.textContent = days;
+  el.h.textContent = pad(hrs);
+  el.m.textContent = pad(min);
+  el.s.textContent = pad(sec);
+  if (diff === 0) {
+    el.st.textContent = 'بدأت الدورية، حيّاكم الله';
+  } else if (total < 3600) {
+    el.st.textContent = 'باقي أقل من ساعة، لا تتأخرون';
+  } else {
+    el.st.textContent = 'باقي على الدورية';
+  }
+}
+tick();
+setInterval(tick, 1000);
+
+var copyBtn = document.getElementById('copy');
+var urlEl = document.getElementById('url');
+copyBtn.addEventListener('click', function () {
+  var text = document.getElementById('map').href;
+  function done(ok) {
+    copyBtn.textContent = ok ? 'تم النسخ' : 'حدّد الرابط وانسخه';
+    setTimeout(function () { copyBtn.textContent = 'نسخ الرابط'; }, 2000);
+  }
+  function fallback() {
+    var r = document.createRange();
+    r.selectNodeContents(urlEl);
+    var sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(r);
+    done(false);
+  }
+  try {
+    navigator.clipboard.writeText(text).then(function () { done(true); }, fallback);
+  } catch (e) { fallback(); }
+});
+</script>
